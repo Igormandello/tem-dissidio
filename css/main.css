@@ -1,0 +1,89 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+html {
+  font-family: "Nunito", sans-serif;
+}
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+}
+section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  min-width: 200vh;
+  width: 200vw;
+  min-height: 200vw;
+  height: 200vh;
+  transform-origin: center center;
+  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  animation: change-colors 10s infinite linear;
+}
+section div {
+  position: absolute;
+  color: white;
+  align-self: center;
+  text-align: center;
+  white-space: nowrap;
+  width: 90%;
+  transition: all 1s;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+section div.last {
+  font-size: 3rem;
+  line-height: 3rem;
+  font-weight: 300;
+  transform: translateY(calc(50vh - 12rem - 1rem));
+  width: 80%;
+}
+section div.current {
+  font-size: 12rem;
+  font-weight: bolder;
+  line-height: 12rem;
+  filter: none;
+  transform: translateY(calc(50vh - 7.5rem));
+}
+
+@keyframes change-colors {
+  from {
+    transform: rotateZ(0);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  section div.last {
+    font-size: 2rem;
+    line-height: 2rem;
+    transform: translateY(calc(50vh - 8rem - 1.5rem));
+  }
+  section div.current {
+    font-size: 8rem;
+    line-height: 8rem;
+    transform: translateY(calc(50vh - 5rem));
+  }
+}
+@media only screen and (max-width: 425px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
