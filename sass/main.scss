@@ -1,0 +1,107 @@
+$main-size: 12rem;
+$main-size-sm: 8rem;
+
+$secondary-size: 3rem;
+$secondary-size-sm: 2rem;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+html {
+  font-family: 'Nunito', sans-serif;
+}
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left:-50%;
+    min-width: 200vh;
+    width: 200vw;
+    min-height: 200vw;
+    height: 200vh;
+    transform-origin: center center;
+    background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+
+    animation: change-colors 10s infinite linear;
+  }
+
+  div {
+    position: absolute;
+    color: white;
+    align-self: center;
+    text-align: center;
+    white-space: nowrap;
+    width: 90%;
+    transition: all 1s;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+
+    &.last {
+      font-size: $secondary-size;
+      line-height: $secondary-size;
+      font-weight: 300;
+      transform: translateY(calc(50vh - #{$main-size} - 1rem));
+      width: 80%;
+    }
+
+    &.current {
+      font-size: $main-size;
+      font-weight: bolder;
+      line-height: $main-size;
+      filter: none;
+      transform: translateY(calc(50vh - #{$main-size * 5 / 8}));
+    }
+  }
+}
+
+@keyframes change-colors {
+  from {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section div {  
+    &.last {
+      font-size: $secondary-size-sm;
+      line-height: $secondary-size-sm;
+      transform: translateY(calc(50vh - #{$main-size-sm} - 1.5rem));
+    }
+
+    &.current {
+      font-size: $main-size-sm;
+      line-height: $main-size-sm;
+      transform: translateY(calc(50vh - #{$main-size-sm * 5 / 8}));
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  html {
+    font-size: 8px;
+  }
+}
